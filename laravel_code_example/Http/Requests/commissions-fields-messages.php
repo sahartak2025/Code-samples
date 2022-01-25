@@ -1,0 +1,38 @@
+<?php
+
+use App\Enums\Commissions;
+
+return [
+    "percent_commission.".Commissions::TYPE_INCOMING.".required_without_all" => t('provider_field_required_without_all'),
+    "percent_commission.".Commissions::TYPE_OUTGOING.".required_without_all" => t('provider_field_required_without_all'),
+    "percent_commission.".Commissions::TYPE_INTERNAL.".required_without_all" => t('provider_field_required_without_all'),
+    "percent_commission.".Commissions::TYPE_REFUND.".required_without_all" => t('provider_field_required_without_all'),
+    "percent_commission.".Commissions::TYPE_INCOMING.".numeric" => t('provider_field_numeric'),
+    "percent_commission.".Commissions::TYPE_OUTGOING.".numeric" => t('provider_field_numeric'),
+    "percent_commission.".Commissions::TYPE_INTERNAL.".numeric" => t('provider_field_numeric'),
+    "percent_commission.".Commissions::TYPE_REFUND.".numeric" => t('provider_field_numeric'),
+    "fixed_commission.".Commissions::TYPE_INCOMING.".required_without_all" => t('provider_field_required_without_all'),
+    "fixed_commission.".Commissions::TYPE_OUTGOING.".required_without_all" => t('provider_field_required_without_all'),
+    "fixed_commission.".Commissions::TYPE_INTERNAL.".required_without_all" => t('provider_field_required_without_all'),
+    "fixed_commission.".Commissions::TYPE_REFUND.".required_without_all" => t('provider_field_required_without_all'),
+    "fixed_commission.".Commissions::TYPE_INCOMING.".numeric" => t('provider_field_numeric'),
+    "fixed_commission.".Commissions::TYPE_OUTGOING.".numeric" => t('provider_field_numeric'),
+    "fixed_commission.".Commissions::TYPE_INTERNAL.".numeric" => t('provider_field_numeric'),
+    "fixed_commission.".Commissions::TYPE_REFUND.".numeric" => t('provider_field_numeric'),
+    "min_commission.".Commissions::TYPE_INCOMING.".required_without_all" => t('provider_field_required_without_all'),
+    "min_commission.".Commissions::TYPE_OUTGOING.".required_without_all" => t('provider_field_required_without_all'),
+    "min_commission.".Commissions::TYPE_INTERNAL.".required_without_all" => t('provider_field_required_without_all'),
+    "min_commission.".Commissions::TYPE_REFUND.".required_without_all" => t('provider_field_required_without_all'),
+    "min_commission.".Commissions::TYPE_INCOMING.".numeric" => t('provider_field_numeric'),
+    "min_commission.".Commissions::TYPE_OUTGOING.".numeric" => t('provider_field_numeric'),
+    "min_commission.".Commissions::TYPE_INTERNAL.".numeric" => t('provider_field_numeric'),
+    "min_commission.".Commissions::TYPE_REFUND.".numeric" => t('provider_field_numeric'),
+    "max_commission.".Commissions::TYPE_INCOMING.".required_without_all" => t('provider_field_required_without_all'),
+    "max_commission.".Commissions::TYPE_OUTGOING.".required_without_all" => t('provider_field_required_without_all'),
+    "max_commission.".Commissions::TYPE_INTERNAL.".required_without_all" => t('provider_field_required_without_all'),
+    "max_commission.".Commissions::TYPE_REFUND.".required_without_all" => t('provider_field_required_without_all'),
+    "max_commission.".Commissions::TYPE_INCOMING.".numeric" => t('provider_field_numeric'),
+    "max_commission.".Commissions::TYPE_OUTGOING.".numeric" => t('provider_field_numeric'),
+    "max_commission.".Commissions::TYPE_INTERNAL.".numeric" => t('provider_field_numeric'),
+    "max_commission.".Commissions::TYPE_REFUND.".numeric" => t('provider_field_numeric'),
+];

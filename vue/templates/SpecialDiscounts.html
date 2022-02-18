@@ -1,0 +1,115 @@
+<b-container class="vue-styles bootstrap-4" id="specialDiscountsContainer" fluid>
+    <div class="portlet light bordered" id="specialDiscountsTableContainer">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-blue-hoki bold uppercase">Special Discounts <span
+                        v-if="specialDiscountSettings.total > 0">({{specialDiscountSettings.total}})</span></span>
+            </div>
+        </div>
+        <div class="portlet-body row">
+            <b-col cols="12">
+                <paginated-table
+                        :table-id="specialDiscountSettings.tableId"
+                        :table-fields="specialDiscountFields"
+                        :per-page="specialDiscountSettings.perPage"
+                        :ref="specialDiscountSettings.tableId"
+                        class="specialDiscountsTable"
+                        @refreshed="onRefreshPage($event, specialDiscountSettings.tableId)"
+                        @page-changed="onChangePage($event, specialDiscountSettings.tableId)"
+                        :reset-page="specialDiscountSettings.resetPage"
+                        :api-url="specialDiscountSettings.apiUrl">
+                    <template v-slot:cell(percentage)="data">
+                        <div>{{data.item.percentage}}%</div>
+                    </template>
+                    <template v-slot:cell(status)="data">
+                        <div>{{statusNames[data.item.status]}}</div>
+                    </template>
+                    <template v-slot:cell(actions)="data">
+                        <b-link title="Delete Special Discount" @click="deleteSpecialDiscount(data.item.id)">Delete</b-link>
+                        <b-link title="Edit Special Discount" @click="editSpecialDiscount(data.item.id)">Edit</b-link>
+                    </template>
+                </paginated-table>
+            </b-col>
+        </div>
+    </div>
+    <div class="portlet light bordered transition-panel" v-show="specialDiscountSettings.isEdit">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-blue-hoki bold uppercase">Edit new special discount</span>
+            </div>
+        </div>
+        <div class="portlet-body row">
+            <b-col cols="12">
+                <b-form @submit="onEditSpecialDiscount" >
+                    <div class="form-body">
+                        <b-row>
+                            <b-col cols="3">
+                                <b-form-group label="Discount Percentage:" label-for="percentage">
+                                    <b-form-select id="percentage" v-model="editSpecialDiscountForm.percentage"
+                                                   :options="percentages" required></b-form-select>
+                                </b-form-group>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-form-group label="Spent:" label-for="spent"
+                                              description="How much money user should spend for get this discount. (Should be unique)">
+                                    <b-form-input id="spent" v-model="editSpecialDiscountForm.spent" type="text"
+                                                  placeholder="Spent money"></b-form-input>
+                                </b-form-group>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-form-group label="Status:" label-for="percentage">
+                                    <b-form-select id="percentage" v-model="editSpecialDiscountForm.status"
+                                                   :options="statuses" required></b-form-select>
+                                </b-form-group>
+                            </b-col>
+                            <b-col cols="12">
+                                <b-button type="submit" variant="primary">Edit code</b-button>
+                                <b-button @click="cancelEditSpecialDiscount">Cancel</b-button>
+                            </b-col>
+                        </b-row>
+                    </div>
+                </b-form>
+            </b-col>
+        </div>
+    </div>
+    <div class="portlet light bordered transition-panel">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-blue-hoki bold uppercase">Add new special discount</span>
+            </div>
+        </div>
+        <div class="portlet-body row">
+            <b-col cols="12">
+                <b-form @submit="onAddSpecialDiscount" @reset="resetAddSpecialDiscountForm" >
+                    <div class="form-body">
+                        <b-row>
+                            <b-col cols="3">
+                                <b-form-group label="Discount Percentage:" label-for="percentage">
+                                    <b-form-select id="percentage" v-model="specialDiscountForm.percentage"
+                                                   :options="percentages" required></b-form-select>
+                                </b-form-group>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-form-group label="Spent:" label-for="spent"
+                                              description="How much money user should spend for get this discount. (Should be unique)">
+                                    <b-form-input id="spent" v-model="specialDiscountForm.spent" type="text"
+                                                  placeholder="Spent money"></b-form-input>
+                                </b-form-group>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-form-group label="Status:" label-for="percentage">
+                                    <b-form-select id="percentage" v-model="specialDiscountForm.status"
+                                                   :options="statuses" required></b-form-select>
+                                </b-form-group>
+                            </b-col>
+                            <b-col cols="12">
+                                <b-button type="submit" variant="primary">Add code</b-button>
+                                <b-button @click="resetAddSpecialDiscountForm" variant="danger">Reset</b-button>
+                            </b-col>
+                        </b-row>
+                    </div>
+                </b-form>
+            </b-col>
+        </div>
+    </div>
+</b-container>
